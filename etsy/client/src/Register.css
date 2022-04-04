@@ -1,0 +1,75 @@
+.register{
+    margin-top: 20px;
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+}
+.register_logo{
+    width: 80px;
+}
+.register_header{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.register_container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 25px;
+}
+.register_header    > p {
+    font-weight: 500;
+    font-size: 20px;
+}
+.register_container > form > h5{
+    margin-bottom: 5px;
+}
+.register_container > p{
+    margin-top: 10px;
+    font-size: 13px;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    font-weight: 400;
+    line-height: 18px;
+}
+.register_container > form > input {
+    background-color: #FFFFF5;
+    height: 48px;
+    margin-bottom: 10px;
+    background-color: white;
+    width: 98%;
+    border-radius: 6px;
+    border: 1px solid #222222 ; 
+}
+.register_signUpButton{
+    height: 48px;
+    background-color: black;
+    color: white;
+    border: 2px solid grey;
+    border-radius: 25px;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 13px;
+    width: 98%;
+    cursor: pointer;
+}
+.register_loginButton{
+    height: 35px;
+    background-color: white;
+    color: black;
+    border: 2px solid grey;
+    margin-left: auto;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 13px;
+    width: 30%;
+}
+.register_linkLoginButton{
+    text-decoration: none;
+    color: black;
+}

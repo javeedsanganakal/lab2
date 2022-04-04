@@ -1,0 +1,114 @@
+[
+    {
+        "id": 0,
+        "name": "iPhone 6S",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-rosegold-select-2015.png",
+        "price": 799
+    },
+    {
+        "id": 1,
+        "name": "Motrola",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.pocket-lint.com/r/s/1200x/assets/images/135252-phones-review-apple-iphone-6s-review-image1-cqpknuovaj.jpg",
+        "price": 349
+    },
+    {
+        "id": 2,
+        "name": "Samsung",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://m.media-amazon.com/images/I/71an9eiBxpL._AC_SL1500_.jpg",
+        "price": 1499
+    },
+    {
+        "id": 3,
+        "name": "Redmi",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 999
+    },
+    {
+        "id": 4,
+        "name": "Nokia",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 599
+    },
+    {
+        "id": 5,
+        "name": "HP",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    },
+    {
+        "id": 6,
+        "name": "Dell",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    },
+    {
+        "id": 7,
+        "name": "Thosibha",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    },
+    {
+        "id": 8,
+        "name": "LG",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    },
+    {
+        "id": 9,
+        "name": "Lenova",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    },
+    {
+        "id": 10,
+        "name": "Vivo",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    },
+    {
+        "id": 11,
+        "name": "Sony",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    },
+    {
+        "id": 12,
+        "name": "Kindle",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    },
+    {
+        "id": 13,
+        "name": "Acer",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    },
+    {
+        "id": 14,
+        "name": "Asus",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    },
+    {
+        "id": 15,
+        "name": "Google Pixel",
+        "description": "Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/uWjEogFLUTBc8mSvagdiuP.jpg",
+        "price": 499
+    }
+]

@@ -1,0 +1,81 @@
+.login{
+    margin-top:20px;
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+
+}
+.login_logo{
+    width: 80px;
+}
+.login_header{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.login_errorMessage{
+    color: red;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+.login_container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 25px;
+}
+.login_header    > p {
+    font-weight: 500;
+    font-size: 20px;
+}
+.login_container > form > h5{
+    margin-bottom: 5px;
+}
+.login_container > p{
+    margin-top: 10px;
+    font-size: 13px;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    font-weight: 400;
+    line-height: 18px;
+}
+.login_container > form > input {
+    background-color: #FFFFF5;
+    height: 48px;
+    margin-bottom: 10px;
+    background-color: white;
+    width: 98%;
+    border-radius: 6px;
+    border: 1px solid #222222 ; 
+}
+.login_signinButton{
+    height: 48px;
+    background-color: black;
+    color: white;
+    border: 2px solid grey;
+    border-radius: 25px;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 13px;
+    width: 98%;
+    cursor: pointer;
+}
+.login_registerButton {
+    height: 35px;
+    background-color: white;
+    color: black;
+    border: 2px solid grey;
+    margin-left: auto;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 13px;
+    width: 30%;
+}
+.login_linkRegisterButton{
+    text-decoration: none;
+    color: black;
+}

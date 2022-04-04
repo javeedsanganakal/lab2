@@ -1,0 +1,16 @@
+.category{
+    display: flex;
+    justify-content: space-evenly;
+}
+.category_link{
+    color: black;
+    text-decoration: none;
+    
+}
+.category_option{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.category_optionOne{
+    font-size: 14px;
+}

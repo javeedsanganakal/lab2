@@ -1,0 +1,30 @@
+.body{
+    background-color: #FDEBD2 !important;
+    /* background-color: #da8207 !important; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.body_link{
+  padding: 20px;
+  text-decoration: none;
+}
+.body_option{
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    display: flex;
+    flex-direction: column;
+}
+.body_circleImage{
+    max-width: 114px !important;
+    width: 114px !important;
+    border-radius: 50% !important;
+    /* overflow: hidden !important; */
+    /* align-items: center; */
+}
+.body_circleImageText{
+    text-align: center;
+    max-width: 114px !important;
+    color: black; 
+    font-weight: 500;
+}
