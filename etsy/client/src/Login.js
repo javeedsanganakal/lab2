@@ -16,11 +16,11 @@ function Login() {
     Axios.post("http://localhost:3001/login", {
       username: username, 
       password: password,
-     }).then((response) => {
+     }).then((response) => (
        <Route render={response.data.message ? (seterrorMessage(response.data.message)) :
        (history.push("/"))} />
       // console.log(response.data[0].username);
-      });
+     ));
   };
   return (
     <div className="login">

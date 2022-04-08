@@ -2,12 +2,21 @@ import React, { useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+// import ShoppingCartIcon from "@material-ui/icons/ShoppingBasket";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CloseIcon from "@material-ui/icons/Close";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
+import PersonIcon from "@material-ui/icons/Person";
+import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
+import MessageIcon from "@material-ui/icons/Message";
+import LocalOfferIcon from "@material-ui/icons/LocalOffer";
+// import GradingIcon from '@material-ui/icons/Grading';
+import SettingsIcon from "@material-ui/icons/Settings";
+import StorefrontIcon from "@material-ui/icons/Storefront";
+// import LogoutIcon from '@material-ui/icons/Logout';
 
 function Header({ data }) {
   const [fliteredData, setFilteredData] = useState([]);
@@ -63,8 +72,7 @@ function Header({ data }) {
           <SearchIcon className="header_searchIcon" />
         </div>
 
-        <div className="header_nav">
-          {/* href causes a page refresh, Link wont refresh the page */}
+        {/* <div className="header_nav">
           <Link to="/" className="header_link">
             <div className="header_option">
               <FavoriteBorderIcon />
@@ -74,27 +82,37 @@ function Header({ data }) {
           <Link to="" className="header_link">
             <div className="header_option">
               <Button className="header_optionLoginButton">
-                <Link to="/login">
                   <AccountCircleIcon className="header_accountCircleIconLink" />
-                </Link>
-                <Link to="/checkout">
+                <Link to="">
                   <ArrowDropDownIcon className="header_arrowDropDownIconLink" />
                 </Link>
               </Button>
             </div>
           </Link>
-
           <Link to="/checkout" className="header_link">
             <div className="header_optionBasket">
-              <ShoppingBasketIcon />
+              <ShoppingCartIcon />
               <span className="header_optionLineTwo header_basketCount">0</span>
             </div>
           </Link>
-        </div>
+        </div> */}
 
-        {/* Sign in */}
-        {/* Favourites heart Icon */}
-        {/* Cart Icon*/}
+        <Navbar>
+          <Link>
+            <NavItem icon={<FavoriteBorderIcon />} />
+          </Link>
+          <Link to="/login">
+            <NavItem icon={<AccountCircleIcon />} />
+          </Link>
+          <Link>
+            <NavItem icon={<ArrowDropDownIcon />}>
+              <DropdownMenu></DropdownMenu>
+            </NavItem>
+          </Link>
+          <Link>
+            <NavItem icon={<ShoppingCartIcon />} />
+          </Link>
+        </Navbar>
       </nav>
 
       {/* Show filter result */}
@@ -115,6 +133,53 @@ function Header({ data }) {
           })}
         </div>
       )}
+    </div>
+  );
+}
+
+// Dropdown B
+function Navbar(props) {
+  return (
+    <nav className="navbar">
+      <ul className="navbar__nav">{props.children}</ul>
+    </nav>
+  );
+}
+function NavItem(props) {
+  const [openDropdown, setOpenDropdown] = useState(false);
+  return (
+    <li className="navitem">
+      <a
+        href="#"
+        className="icon_button"
+        onClick={() => setOpenDropdown(!openDropdown)}
+      >
+        {props.icon}
+      </a>
+      {openDropdown && props.children}
+    </li>
+  );
+}
+function DropdownMenu() {
+  function DropdownItem(props) {
+    return (
+      <a href="#" className="menu_item">
+        <span className="icon_button">{props.leftIcon}</span>
+        {props.children}
+        <span className="icon_right">{props.rightIcon}</span>
+      </a>
+    );
+  }
+  return (
+    <div className="dropdown">
+      <DropdownItem leftIcon={<PersonIcon />}>View Your Profile</DropdownItem>
+      <DropdownItem leftIcon={<CardGiftcardIcon />}>Gift Card</DropdownItem>
+      <DropdownItem leftIcon={<MessageIcon />}>Messages</DropdownItem>
+      <DropdownItem leftIcon={<LocalOfferIcon />}>Your Offers</DropdownItem>
+      {/* <DropdownItem leftIcon={<GradingIcon/>}>Purchase and reviews</DropdownItem> */}
+      <DropdownItem leftIcon={<SettingsIcon />}>Account Settings</DropdownItem>
+      <DropdownItem leftIcon={<StorefrontIcon />}>Sell on Etsy</DropdownItem>
+      {/* <DropdownItem leftIcon={<LogoutIcon/>}>Sign out</DropdownItem> */}
     </div>
   );
 }

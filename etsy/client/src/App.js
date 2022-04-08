@@ -10,8 +10,9 @@ import Contact from "./Contact";
 import Footer from "./Footer";
 import Login from "./Login";
 import Register from "./Register";
-import UserProfile from "./UserProfile";
+import UserProfile from "./components/UserProfile";
 import ItemsData from "./Data.json";
+
 
 function App() {
   
@@ -34,6 +35,7 @@ function App() {
           <Route path="/UserProfile">
             <UserProfile/>
           </Route>
+
           {/* This is an default page i.e., http://localhost:3000/*/}
           <Route path="/">
             <Header data={ItemsData}/>
