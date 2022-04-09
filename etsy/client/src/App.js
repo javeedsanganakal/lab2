@@ -7,10 +7,10 @@ import Welcome from "./Welcome";
 import Body from "./Body";
 import Home from "./Home";
 import Contact from "./Contact";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 import Login from "./Login";
 import Register from "./Register";
-import UserProfile from "./components/UserProfile";
+import ProfileDashboard from "./components/ProfileDashboard";
 import ItemsData from "./Data.json";
 
 
@@ -32,8 +32,8 @@ function App() {
           <Route path="/Register">
             <Register/>
           </Route>
-          <Route path="/UserProfile">
-            <UserProfile/>
+          <Route path="/ProfileDashboard">
+            <ProfileDashboard/>
           </Route>
 
           {/* This is an default page i.e., http://localhost:3000/*/}
