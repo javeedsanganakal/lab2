@@ -50,7 +50,7 @@ function shopHome() {
 
   const getItemsByItemSearchId = () => {
     Axios.get(
-      "http://localhost:4000/api/products/getItemsByItemSearchId/" + id
+      "http://54.82.11.107:4000/api/products/getItemsByItemSearchId/" + id
     ).then((response) => {
       console.log(response);
       if (response) {
@@ -74,14 +74,15 @@ function shopHome() {
   };
 
   var viewItems = (variables) => {
-    console.log(
-      variables["searchTerm"] + "------------------ getting viewItems"
-    );
+    console.log(variables["searchTerm"] + "------------ getting viewItems");
     setShowProds(true);
     console.log("---------------in view Items-------------------");
-    Axios.post("http://localhost:4000/api/products/getAllProducts/" + user.id, {
-      searchTerm: variables["searchTerm"],
-    }).then((response) => {
+    Axios.post(
+      "http://54.82.11.107:4000/api/products/getAllProducts/" + user.id,
+      {
+        searchTerm: variables["searchTerm"],
+      }
+    ).then((response) => {
       if (response.data.success) {
         if (variables.loadMore) {
           setProducts([...products, ...response.data.result]);
@@ -138,7 +139,7 @@ function shopHome() {
             <p>Price: ${pro.itemPrice}</p>
             <p className="card-text">{pro.itemDescription}</p>
             <button
-              style={{ backgroundColor: "#eb6d20" }}
+              style={{ backgroundColor: "orange" }}
               onClick={() => editItem(pro._id)}
               className="btn-sm btn-dark"
             >
@@ -176,7 +177,7 @@ function shopHome() {
               marginLeft: "7.5%",
               padding: "10px",
               width: "25%",
-              backgroundColor: "#eb6d20",
+              backgroundColor: "orange",
               border: "none",
               color: "white",
             }}
@@ -193,7 +194,7 @@ function shopHome() {
             marginTop: "-3.5%",
           }}
         >
-          {/* <SearchFeature refreshFunction={updateSearchTerm} /> */}
+          <SearchFeature refreshFunction={updateSearchTerm} />
         </div>
         <div>
           <div style={{ width: "75%", margin: "3rem auto" }}>

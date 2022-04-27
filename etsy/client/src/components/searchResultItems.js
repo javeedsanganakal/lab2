@@ -122,7 +122,7 @@ function searchResultItems() {
       <div className="container-fluid mx-2">
         <div className="row mt-5 mx-2">
           <div style={{ width: "20%", height: "50px" }}>
-            {/* <div>
+            <div>
               <div class="card-body">
                 <label for="min-price" class="form-label">
                   Min price:
@@ -167,7 +167,7 @@ function searchResultItems() {
                   Apply filter
                 </button>
               </div>
-            </div> */}
+            </div>
             {/* 
             <input
               type="checkbox"
@@ -215,7 +215,7 @@ function searchResultItems() {
 export default searchResultItems;
 const ProductContainer = styled.footer`
   .button {
-    background-color: #eb6d20; /* Green */
+    background-color: orange; /* Green */
     border: none;
     color: white;
     padding: 8px;

@@ -37,7 +37,7 @@ function profileForm() {
                 </tr>
                 <tr>
                   <td>Profile Name</td>
-                  <td>Divya Maddipudi</td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>Gender</td>

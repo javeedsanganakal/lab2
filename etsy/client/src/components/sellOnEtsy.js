@@ -16,9 +16,9 @@ function sellOnEtsy() {
     console.log("cookie is found " + user);
     redirectVar = <Navigate to="/home" />;
   }
-
+  
   let gotoSellPage = null;
-  if (user.shopName === "") {
+  if (user.shopName === null) {
     if (shop === null) {
       gotoSellPage = <div>{<Navigate to="/shopName" />}</div>;
     } else {

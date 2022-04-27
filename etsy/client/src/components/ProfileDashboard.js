@@ -28,7 +28,7 @@ function profileDashboard() {
 
   const getFavouriteItems = () => {
     Axios.get(
-      "http://localhost:4000/api/products/getFavourites/" + user.id
+      "http://54.82.11.107:4000/api/products/getFavourites/" + user.id
     ).then((response) => {
       console.log(response.data.result);
       if (response.data.success === true) {
@@ -42,7 +42,8 @@ function profileDashboard() {
 
         dispatch(favouritesList(response.data.result));
 
-        // console.log(response.data.result.length);
+        console.log(response.data.result.length);
+        console.log(response.data.result);
       }
     });
   };
@@ -54,7 +55,7 @@ function profileDashboard() {
   const handleFavourite = (favId) => {
     console.log("Favourites deletd" + favId);
     Axios.delete(
-      "http://localhost:4000/api/products/deleteFavourite/" + favId
+      "http://54.82.11.107:4000/api/products/deleteFavourite/" + favId
     ).then((response) => {
       console.log(response.data);
       if (response.data.success === true) {
@@ -66,12 +67,14 @@ function profileDashboard() {
   };
 
   let renderFavourites = null;
+  console.log(favProds);
   if (favProds === null) {
     renderFavourites = () => {
       return <div>No Favourites added</div>;
     };
   } else {
     renderFavourites = favProds.map((pro) => {
+      // console.log("ItemImage " + pro.itemId["itemImage"]);
       return (
         <div className="home_cards col-md-4 mb-4">
           <div className="home_card card">
@@ -108,6 +111,7 @@ function profileDashboard() {
   let redirectVar = null;
   if (user === null || !cookie.load("user")) {
     console.log("cookie is found " + user);
+
     redirectVar = <Navigate to="/home" />;
   }
   return (

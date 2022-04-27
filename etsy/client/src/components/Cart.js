@@ -39,7 +39,7 @@ const CartScreen = () => {
 
   const getCartList = () => {
     Axios.get(
-      "http://localhost:4000/api/products/getCartItems/" + user.id
+      "http://54.82.11.107:4000/api/products/getCartItems/" + user.id
     ).then((response) => {
       console.log(response.data.result);
       if (response.data.success === true) {
@@ -79,9 +79,12 @@ const CartScreen = () => {
     console.log(checkOutItems.length);
     checkOutItems.map((product) => {
       console.log(product);
-      Axios.post("http://localhost:4000/api/products/addProductToPurchase/", {
-        product: product,
-      })
+      Axios.post(
+        "http://54.82.11.107:4000/api/products/addProductToPurchase/",
+        {
+          product: product,
+        }
+      )
         .then((response) => {
           console.log(response);
         })
@@ -95,7 +98,8 @@ const CartScreen = () => {
       };
 
       Axios.put(
-        "http://localhost:4000/api/products/editItemQtyById/" + product.itemId,
+        "http://54.82.11.107:4000/api/products/editItemQtyById/" +
+          product.itemId,
         itemDetails
       ).then((response) => {
         if (response.data.success) {
@@ -104,7 +108,7 @@ const CartScreen = () => {
       });
     });
 
-    Axios.delete("http://localhost:4000/api/products/clearCart")
+    Axios.delete("http://54.82.11.107:4000/api/products/clearCart")
       .then((response) => {
         if (response) {
           console.log("Items deleted successfully");
@@ -157,7 +161,7 @@ const CartScreen = () => {
           </div>
           <div>
             <button
-              style={{ backgroundColor: "#eb6d20", color: "black" }}
+              style={{ backgroundColor: "orange", color: "black" }}
               onClick={() => {
                 handleCheckOut();
                 // item.itemId,

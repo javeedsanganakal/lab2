@@ -20,10 +20,11 @@ function checkShopName() {
       setError("Minimum 4 characters required");
     } else {
       setError("Available");
-      Axios.post("http://localhost:4000/api/users/findShopDuplicates/", {
+      Axios.post("http://54.82.11.107:4000/api/users/findShopDuplicates/", {
         shopName: shopName,
       })
         .then((response) => {
+          console.log(response);
           if (response.data.message === "duplicate") {
             setError("Not Available");
           } else if (response.data.message === "No duplicates") {
@@ -38,7 +39,7 @@ function checkShopName() {
 
   const handleCreateShop = (e) => {
     e.preventDefault();
-    Axios.put("http://localhost:4000/api/users/createShop/" + user.id, {
+    Axios.put("http://54.82.11.107:4000/api/users/createShop/" + user.id, {
       shopName: shopName,
     }).then((response) => {
       if (response.data) {

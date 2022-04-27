@@ -31,7 +31,7 @@ function Purchases() {
 
   const getPurchasedItems = () => {
     Axios.get(
-      "http://localhost:4000/api/products/getPurchasedItems/" + user.id
+      "http://54.82.11.107:4000/api/products/getPurchasedItems/" + user.id
     ).then((response) => {
       if (response.data.success === true) {
         console.log("----------------Purchased products-------------------");
@@ -66,8 +66,7 @@ function Purchases() {
               </p>
             </div> */}
 
-            {/* <hr style={{ marginTop: "-2px" }}></hr> */}
-            <div className="item">
+            <div className="item" style={{ bordern: "none" }}>
               <img src={pro.itemImage} className="card-img-left" alt="..." />
 
               <div style={{ marginLeft: "10px" }} className="item-details">
@@ -82,8 +81,6 @@ function Purchases() {
                 ) : (
                   <p className="card-text"></p>
                 )} */}
-
-                {/* <button className="btn-sm btn-dark">Edit</button> */}
               </div>
             </div>
           </div>
@@ -92,8 +89,7 @@ function Purchases() {
     });
   }
 
-  //change page
-  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // const setItemsInPage = (itemsCount) => {
   //   localStorage.setItem("itemsPerPage", itemsCount);
@@ -106,12 +102,12 @@ function Purchases() {
       <Hoverbar />
       <hr></hr>
       <div className="purchases_header">
-        <h2 style={{ marginLeft: "110px" }}>Purchases Page</h2>
+        <h2 style={{ marginLeft: "110px" }}>All Purchases</h2>
         <div style={{ width: "20%" }}>
-          {/* <label htmlFor="itemsPerPage" style={{ marginRight: "10px" }}>
-            Items per page
-          </label> */}
-          {/* <select
+          <label htmlFor="itemsPerPage" style={{ marginRight: "10px" }}>
+            Items count
+          </label>
+          <select
             style={{ width: "25%", height: "30px", marginTop: "5px" }}
             onChange={(e) => {
               setItemsPerPage(e.target.value);
@@ -119,24 +115,25 @@ function Purchases() {
             id="itemsPerPage"
           >
             <option></option>
+            <option value="2"> 1 </option>
             <option value="2"> 2 </option>
             <option value="5" selected>
               5
             </option>
             <option value="10"> 10 </option>
-          </select> */}
+          </select>
         </div>
       </div>
       <div className="profile_favourites">
         <div className="container-fluid mx-1">
           <div className="row mt-5 mx-1">
             <div className="col-md-9">
-              <div className="row"> {renderPurchases} </div>
-              {/* <Pagination
+              <div className="row">{renderPurchases}</div>
+              <Pagination
                 itemsPerPage={itemsPerPage}
                 totalItems={purchasedProducts.length}
                 paginate={paginate}
-              /> */}
+              />
             </div>
           </div>
         </div>

@@ -31,14 +31,14 @@ function addProducts({ setShowProductsAddPage }) {
       formData.append("itemCategory", itemCategory);
     }
 
-    console.log(itemName);
+    console.log(itemImage);
     console.log(itemDescription);
     console.log(itemPrice);
     console.log(itemCount);
     console.log(itemCategory);
 
     Axios.post(
-      "http://localhost:4000/api/products/addProduct/" + user.id,
+      "http://54.82.11.107:4000/api/products/addProduct/" + user.id,
       formData
     ).then((response) => {
       console.log(response);

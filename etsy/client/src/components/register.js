@@ -3,7 +3,7 @@ import Axios from "axios";
 import { useDispatch } from "react-redux";
 import { login, registerUser, activeShop } from "../features/userSlice";
 
-function register({ setShowRegister }) {
+function Register({ setShowRegister }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,14 +14,13 @@ function register({ setShowRegister }) {
     // console.log(email + " " + username + " " + password);
     // localStorage.Item("preferedCurrency", userPreferedCurrency);
     console.log(" in register axios ");
-    Axios.post("http://localhost:4000/api/users/register", {
+    Axios.post("http://54.82.11.107:4001/api/users/register", {
       email: email,
       username: username,
       password: password,
     }).then((response) => {
       if (response.data.success === true) {
         console.log("Success========: " + response.data.success);
-
         dispatch(
           registerUser({
             username: username,
@@ -29,7 +28,6 @@ function register({ setShowRegister }) {
           })
         );
         console.log("In frontend register");
-
         window.location.pathname = "/home";
       }
     });
@@ -104,4 +102,4 @@ function register({ setShowRegister }) {
   );
 }
 
-export default register;
+export default Register;

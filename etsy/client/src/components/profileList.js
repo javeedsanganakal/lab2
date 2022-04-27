@@ -70,7 +70,7 @@ function profileList({ setShowProfileLists }) {
               Purchases and reviews
             </li>
             <li onClick={handleSellOnEtsy} className="profile-icon">
-              Sell on Etsy
+              Buy and Sell on Etsy
             </li>
             <li onClick={handleSignOut} className="profile-icon">
               Sign out

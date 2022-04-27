@@ -25,7 +25,7 @@ function searchBar(props) {
     console.log("submit clicked");
     if (searchValue !== "") {
       Axios.get(
-        "http://localhost:4000/api/products/getSearchItems/" + searchValue
+        "http://54.82.11.107:4000/api/products/getSearchItems/" + searchValue
       ).then((response) => {
         if (response.data.success === true) {
           console.log(response.data.result);
@@ -59,9 +59,9 @@ function searchBar(props) {
       {/* <span onClick={handleSearchResult}>
         <SearchIcon />
       </span> */}
-      {/* <button type="submit" onClick={handleSearchResult} className="searchBtn">
+      <button type="submit" onClick={handleSearchResult} className="searchBtn">
         <SearchIcon className="searchIcon" />
-      </button> */}
+      </button>
     </form>
   );
 }

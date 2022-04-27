@@ -42,7 +42,7 @@ function profileForm() {
     axios.defaults.headers.common["authorization"] =
       localStorage.getItem("token");
     Axios.put(
-      "http://localhost:4000/api/users/updateUser/" + user.id,
+      "http://54.82.11.107:4000/api/users/updateUser/" + user.id,
       formData
     ).then((response) => {
       console.log(response);
@@ -81,7 +81,7 @@ function profileForm() {
     // e.preventDefault();
     axios.defaults.headers.common["authorization"] =
       localStorage.getItem("token");
-    Axios.get("http://localhost:4000/api/users/getShopById/" + user.id).then(
+    Axios.get("http://54.82.11.107:4000/api/users/getShopById/" + user.id).then(
       (response) => {
         console.log(response);
 
@@ -117,7 +117,7 @@ function profileForm() {
   // }, []);
 
   // const fetchItemDetails = () => {
-  //   Axios.get("http://localhost:4000/getShopById/" + user.id).then(
+  //   Axios.get("http://54.82.11.107:4000/getShopById/" + user.id).then(
   //     (response) => {
   //       if (response) {
   //         console.log(response.data.result[0].shopImage);
@@ -613,7 +613,7 @@ function profileForm() {
 
               <button
                 className="clicky"
-                style={{ backgroundColor: "#eb6d20" }}
+                style={{ backgroundColor: "orange" }}
                 onClick={handleUserData}
               >
                 Save Changes

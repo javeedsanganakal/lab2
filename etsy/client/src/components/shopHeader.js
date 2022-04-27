@@ -22,7 +22,7 @@ function shopHeader({ searchProductUserId }) {
 
   useEffect(() => {
     console.log(user.id + " -------------redux user id --------------------");
-    Axios.get("http://localhost:4000/api/users/getShopById/" + user.id).then(
+    Axios.get("http://54.82.11.107:4000/api/users/getShopById/" + user.id).then(
       (response) => {
         if (response.data.success) {
           // setShop(response.data.result);
@@ -41,7 +41,7 @@ function shopHeader({ searchProductUserId }) {
       }
     );
 
-    Axios.get("http://localhost:4000/api/products/getSalesCount").then(
+    Axios.get("http://54.82.11.107:4000/api/products/getSalesCount").then(
       (response) => {
         console.log("In sales count axios");
         console.log(response);
@@ -80,7 +80,7 @@ function shopHeader({ searchProductUserId }) {
           id="imgupload"
           className="editshop_btn"
           type="submit"
-          style={{ backgroundColor: "#eb6d20" }}
+          style={{ backgroundColor: "orange" }}
         >
           Edit shop
         </button>
