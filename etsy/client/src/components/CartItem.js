@@ -35,39 +35,39 @@ const CartItem = ({ item }) => {
     );
   }, []);
 
-  const qtyChangeHandler = (qty) => {
+  const qtyChangeHandler = (quantity) => {
     Axios.post("http://54.82.11.107:4000/api/products/addToCart", {
       itemId: item.itemId._id,
       userId: user.id,
-      qty: Number(qty),
+      quantity: Number(quantity),
     })
-      .then((response) => {
-        console.log(response);
-        if (response.data.success) {
-          console.log("Items added to cart successfully");
+      .then((res) => {
+        console.log(res);
+        if (res.data.success) {
+          console.log("Items added to cart successfully...");
           window.location.reload(true);
-          // window.location.pathname = "/home";
+          
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
   };
 
-  const removeHandler = (id) => {
+  const removeHandler = (Id) => {
     console.log("remove");
     Axios.delete(
-      "http://54.82.11.107:4000/api/products/deleteCartItem/" + id
-    ).then((response) => {
-      console.log(response.data);
-      if (response.data.success === true) {
+      "http://54.82.11.107:4000/api/products/deleteCartItem/" + Id
+    ).then((res) => {
+      console.log(res.data);
+      if (res.data.success === true) {
         console.log("item deleted successfully");
-        console.log(response.data.res);
+        console.log(res.data.res);
         window.location.reload(true);
       }
     });
 
-    // dispatch(removeFromCart(id));
+    
   };
 
   const giftOptions = (giftMessage, itemId) => {
@@ -107,44 +107,8 @@ const CartItem = ({ item }) => {
             height={150}
           />
         </div>
-        {/* <div style={{ marginLeft: "50px" }} className="cartItem__name">
-          <p>{item.itemId.itemName}</p>
-          <input
-            type="checkbox"
-            id="gift"
-            name="gift"
-            onChange={() => {
-              setGiftOption(!giftOption);
-            }}
-          />
-          <label for="gift"> This order contains gift</label>
-          {giftOption ? (
-            <>
-              <input
-                type="text"
-                style={{ width: "95%", paddingLeft: "5px" }}
-                placeholder="Enjoy your gift!!"
-                onChange={(event) => {
-                  setGiftDescription(event.target.value);
-                }}
-              />
-              <button
-                style={{
-                  borderRadius: "4px",
-                  backgroundColor: "rgb(243, 234, 223)",
-                  marginTop: "1px",
-                  border: "1px solid black",
-                }}
-                onClick={() => giftOptions(giftDescription, item.itemId._id)}
-              >
-                Save Gift Options
-              </button>
-            </>
-          ) : (
-            <div></div>
-          )}
-        </div> */}
-        {/* <p className="cartitem__price">${item.itemId.itemPrice}</p> */}
+        
+       
         <select
           value={item.qty}
           onChange={(e) => qtyChangeHandler(e.target.value)}
