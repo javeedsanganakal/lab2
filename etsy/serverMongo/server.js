@@ -35,4 +35,4 @@ app.use("/", require("./routes/index"));
 app.use("/", require("./routes/router"));
 app.use("/", require("./routes/productsRouter"));
 
-app.listen(PORT, () => console.log("Server Started" + PORT));
+app.listen(PORT_NUMBER, () => console.log(`server is listening on port ${PORT_NUMBER}`));
