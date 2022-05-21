@@ -14,27 +14,23 @@ function searchBar(props) {
   const prod = useSelector(getProducts);
   const [searchTerms, setSearchTerms] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  // const [products, setProducts] = useState([]);
-  // const searchInfo = (e) => {
-  //   e.preventDefault();
-  //   console.log("Search clicked");
-  // };
+  
 
-  const handleSearchResult = (e) => {
-    e.preventDefault();
+  const handleSearchResult = (event) => {
+    event.preventDefault();
     console.log("submit clicked");
     if (searchValue !== "") {
       Axios.get(
         "http://54.82.11.107:4000/api/products/getSearchItems/" + searchValue
-      ).then((response) => {
-        if (response.data.success === true) {
-          console.log(response.data.result);
+      ).then((res) => {
+        if (res.data.success === true) {
+          console.log(res.data.result);
           console.log(prod);
           if (prod === null || prod.length === 0) {
             console.log(" products is null");
-            dispatch(productsList(response.data.result));
+            dispatch(productsList(res.data.result));
           } else {
-            dispatch(updateProducts(response.data.result));
+            dispatch(updateProducts(res.data.result));
           }
         }
         window.location.pathname = "/searchResults";
@@ -51,8 +47,8 @@ function searchBar(props) {
         // id="searchBar"
         className="searchBar"
         placeholder="Search for anything..."
-        onChange={(event) => {
-          setSearchValue(event.target.value);
+        onChange={(e) => {
+          setSearchValue(e.target.value);
         }}
       ></input>
 
