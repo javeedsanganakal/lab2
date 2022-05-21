@@ -33,18 +33,18 @@ function ProductOverView() {
       userId: user.id,
       qty: Number(qty),
     })
-      .then((response) => {
-        console.log(response);
-        if (response.data.success) {
+      .then((res) => {
+        console.log(res);
+        if (res.data.success) {
           console.log("Items added to cart successfully");
           // window.location.pathname = "/home";
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
     setAddToCart("Item added to your cart successfully");
-    cartItems.map((ele) => console.log(ele));
+    cartItems.map((element) => console.log(element));
     if (cartItems) {
       dispatch(
         createCartItem({
