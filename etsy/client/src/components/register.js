@@ -9,15 +9,13 @@ function Register({ setShowRegister }) {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
-  const addUser = (e) => {
-    // e.preventDefault();
-    // console.log(email + " " + username + " " + password);
-    // localStorage.Item("preferedCurrency", userPreferedCurrency);
+  const addUser = (event) => {
+   
     console.log(" in register axios ");
     Axios.post("http://54.82.11.107:4001/api/users/register", {
-      email: email,
-      username: username,
-      password: password,
+      email,
+      username,
+      password,
     }).then((response) => {
       if (response.data.success === true) {
         console.log("Success========: " + response.data.success);
@@ -55,8 +53,8 @@ function Register({ setShowRegister }) {
                 className="email"
                 id="email"
                 placeholder="Enter email"
-                onChange={(event) => {
-                  setEmail(event.target.value);
+                onChange={(e) => {
+                  setEmail(e.target.value);
                 }}
                 required
               />
@@ -70,8 +68,8 @@ function Register({ setShowRegister }) {
                 className="username"
                 id="username"
                 placeholder="Enter username"
-                onChange={(event) => {
-                  setUsername(event.target.value);
+                onChange={(e) => {
+                  setUsername(e.target.value);
                 }}
                 required
               />
@@ -85,8 +83,8 @@ function Register({ setShowRegister }) {
                 className="password"
                 id="password"
                 placeholder="Password"
-                onChange={(event) => {
-                  setPassword(event.target.value);
+                onChange={(e) => {
+                  setPassword(e.target.value);
                 }}
                 required
               />
