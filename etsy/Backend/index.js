@@ -3,7 +3,7 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var cors = require("cors");
-var kafka = require("./kafka/client");
+var kafka = require("./kafka/cli");
 //use cors to allow cross origin resource sharing
 app.use(
   cors({
