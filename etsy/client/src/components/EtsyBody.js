@@ -21,47 +21,45 @@ import ProductOverView from "./ProductOverView";
 
 function EtsyBody() {
   const dispatch = useDispatch();
-  // const [products, setProducts] = useState([]);
+ 
   const products = useSelector(getAllProducts);
   const user = useSelector(selectUser);
-  // const favourites = useSelector(getAllFavourites);
-  // const product = useSelector(getProducts);
-  // const getAllItemsFromItems = useSelector(getAllItems);
+ 
   const [favourites, setFavourites] = useState([]);
   const [items, SetItems] = useState([]);
   const [favouriteIcon, setFavoutriteIcon] = useState(false);
   const [prodLen, setProdLen] = useState(0);
-  // const [productOverview, setProductOverview] = useState(false);
+
 
   useEffect(() => {
     getItems();
-    // getFavourites();
+    
   }, []);
 
   const getItems = () => {
     Axios.get("http://54.82.11.107:4000/api/products/getItems").then(
-      (response) => {
-        if (response.data.success === true) {
-          console.log(response.data.result);
-          dispatch(getAllItems(response.data.result));
+      (res) => {
+        if (res.data.success === true) {
+          console.log(res.data.result);
+          dispatch(getAllItems(res.data.result));
 
-          for (let i = 0; i < response.data.result.length; i++) {
-            // console.log(response.data.result[i].itemId);
+          for (let i = 0; i < res.data.result.length; i++) {
+            // console.log(res.data.result[i].itemId);
             const updateItems = [
               ...items,
               {
-                itemId: response.data.result[i].itemId,
-                userId: response.data.result[i].userId,
-                itemName: response.data.result[i].itemName,
-                itemCategory: response.data.result[i].itemCategory,
-                itemPrice: response.data.result[i].itemPrice,
-                itemDescription: response.data.result[i].itemDescription,
-                itemCount: response.data.result[i].itemCount,
-                itemImage: response.data.result[i].itemImage,
+                itemId: res.data.result[i].itemId,
+                userId: res.data.result[i].userId,
+                itemName: res.data.result[i].itemName,
+                itemCategory: res.data.result[i].itemCategory,
+                itemPrice: res.data.result[i].itemPrice,
+                itemDescription: res.data.result[i].itemDescription,
+                itemCount: res.data.result[i].itemCount,
+                itemImage: res.data.result[i].itemImage,
               },
             ];
             SetItems(updateItems);
-            // console.log("-------------geting all products----------------");
+            // console.log("-------------geting all Product----------------");
           }
         }
       }
@@ -72,11 +70,11 @@ function EtsyBody() {
     if (user !== null) {
       Axios.get(
         "http://54.82.11.107:4000/api/products/getFavourites/" + user.id
-      ).then((response) => {
+      ).then((res) => {
         console.log("user id for favourites" + user.id);
-        console.log(response.data.result);
-        if (response.data.success === true) {
-          dispatch(favouritesList(response.data.result));
+        console.log(res.data.result);
+        if (res.data.success === true) {
+          dispatch(favouritesList(res.data.result));
         }
       });
     }
@@ -87,20 +85,20 @@ function EtsyBody() {
     Axios.post("http://54.82.11.107:4000/api/products/addFavourite", {
       itemId: itemId,
       userId: userId,
-    }).then((response) => {
-      if (response.data.success === true) {
-        console.log(response.data.result);
+    }).then((res) => {
+      if (res.data.success === true) {
+        console.log(res.data.result);
         console.log("new fav added");
-        // setFavoutriteIcon(true);
+        
       }
     });
   };
 
-  const handleOpenImage = (pro) => {
-    // console.log(pro.itemId);
-    // console.log(pro.itemImage);
-    dispatch(productOverview(pro));
-    // console.log(pro.itemCount);
+  const handleOpenImage = (product) => {
+    // console.log(product.itemId);
+    // console.log(product.itemImage);
+    dispatch(productOverview(product));
+    // console.log(product.itemCount);
     // setProductOverview(true);
     let redirectVar = null;
     if (user === null || !cookie.load("user")) {
@@ -113,7 +111,7 @@ function EtsyBody() {
 
   var renderProducts = null;
 
-  renderProducts = products.map((pro) => {
+  renderProducts = products.map((product) => {
     return (
       <div
         className="home_cards col-md-4 mb-4"
@@ -131,7 +129,7 @@ function EtsyBody() {
             }}
             // className="favourite_icon"
             onClick={() => {
-              handleFavourite(pro._id, user.id);
+              handleFavourite(product._id, user.id);
             }}
           >
             {/* {toggleFavourites} */}
@@ -140,23 +138,23 @@ function EtsyBody() {
               favourites.userId === user.id} */}
           </div>
           <img
-            src={pro.itemImage}
+            src={product.itemImage}
             className="home_image card-img-top"
             alt="..."
             onClick={() => {
-              handleOpenImage(pro);
+              handleOpenImage(product);
             }}
           />
           {/* <p className="home_prices">&nbsp;</p> */}
 
           <div className="card-body">
-            <h5 className="card-title">{pro.itemName}</h5>
+            <h5 className="card-title">{product.itemName}</h5>
             <p className="card-title">
               Price:
               {localStorage.getItem("preferedCurrency") === null
                 ? "$"
                 : localStorage.getItem("preferedCurrency")}
-              {pro.itemPrice}
+              {product.itemPrice}
             </p>
             <p className="card-text">{pro.itemDescription}</p>
             <button
