@@ -16,21 +16,21 @@ function searchBar(props) {
   const [searchValue, setSearchValue] = useState("");
   
 
-  const handleSearchResult = (event) => {
-    event.preventDefault();
+  const handleSearchResult = (e) => {
+    e.preventDefault();
     console.log("submit clicked");
     if (searchValue !== "") {
       Axios.get(
         "http://54.82.11.107:4000/api/products/getSearchItems/" + searchValue
-      ).then((res) => {
-        if (res.data.success === true) {
-          console.log(res.data.result);
+      ).then((response) => {
+        if (response.data.success === true) {
+          console.log(response.data.result);
           console.log(prod);
           if (prod === null || prod.length === 0) {
             console.log(" products is null");
-            dispatch(productsList(res.data.result));
+            dispatch(productsList(response.data.result));
           } else {
-            dispatch(updateProducts(res.data.result));
+            dispatch(updateProducts(response.data.result));
           }
         }
         window.location.pathname = "/searchResults";
@@ -47,14 +47,12 @@ function searchBar(props) {
         // id="searchBar"
         className="searchBar"
         placeholder="Search for anything..."
-        onChange={(e) => {
-          setSearchValue(e.target.value);
+        onChange={(event) => {
+          setSearchValue(event.target.value);
         }}
       ></input>
 
-      {/* <span onClick={handleSearchResult}>
-        <SearchIcon />
-      </span> */}
+     
       <button type="submit" onClick={handleSearchResult} className="searchBtn">
         <SearchIcon className="searchIcon" />
       </button>
