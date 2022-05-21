@@ -34,14 +34,7 @@ app.use(function (req, res, next) {
 });
 
 //Route to get All Books when user visits the Home Page
-/*app.get('/books', function(req,res){   
-    res.writeHead(200,{
-        'Content-Type' : 'application/json'
-    });
-    res.end(JSON.stringify(books));
-    
-});
-*/
+
 
 app.post("/api/users/register", function (req, res) {
   console.log(req.body + " IN USER REGISTER POST");
@@ -108,7 +101,7 @@ app.post("/book", function (req, res) {
       console.log("Inside err");
       res.json({
         status: "error",
-        msg: "System Error, Try Again.",
+        msg: "System Error, Try Again!!.",
       });
     } else {
       console.log("Inside else");
@@ -121,6 +114,6 @@ app.post("/book", function (req, res) {
     }
   });
 });
-//start your server on port 3001
-app.listen(4001);
-console.log("Server Listening on port 4001");
+//start your server
+app.listen(4002);
+console.log("Server is  Listening on port 4002");
