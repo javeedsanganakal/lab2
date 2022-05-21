@@ -29,21 +29,16 @@ function profileDashboard() {
   const getFavouriteItems = () => {
     Axios.get(
       "http://54.82.11.107:4000/api/products/getFavourites/" + user.id
-    ).then((response) => {
-      console.log(response.data.result);
-      if (response.data.success === true) {
+    ).then((res) => {
+      console.log(res.data.result);
+      if (res.data.success === true) {
         console.log("geting all fav products and storing in redux");
-        // response.data.result.map((favItem) => {
-        //   console.log("Fav items");
-        //   // console.log(favItem.itemId);
-        //   //  setProducts([...products, ...response.data.result]);
-        //   setFavProds([...favProdS, favItem.itemId]);
-        // });
+        
 
-        dispatch(favouritesList(response.data.result));
+        dispatch(favouritesList(res.data.result));
 
-        console.log(response.data.result.length);
-        console.log(response.data.result);
+        console.log(res.data.result.length);
+        console.log(res.data.result);
       }
     });
   };
@@ -56,11 +51,11 @@ function profileDashboard() {
     console.log("Favourites deletd" + favId);
     Axios.delete(
       "http://54.82.11.107:4000/api/products/deleteFavourite/" + favId
-    ).then((response) => {
-      console.log(response.data);
-      if (response.data.success === true) {
+    ).then((res) => {
+      console.log(res.data);
+      if (res.data.success === true) {
         console.log("item deleted successfully");
-        console.log(response.data.res);
+        console.log(res.data.res);
         window.location.pathname = "/profile";
       }
     });
@@ -73,8 +68,8 @@ function profileDashboard() {
       return <div>No Favourites added</div>;
     };
   } else {
-    renderFavourites = favProds.map((pro) => {
-      // console.log("ItemImage " + pro.itemId["itemImage"]);
+    renderFavourites = favProds.map((product) => {
+      // console.log("ItemImage " + product.itemId["itemImage"]);
       return (
         <div className="home_cards col-md-4 mb-4">
           <div className="home_card card">
@@ -86,20 +81,20 @@ function profileDashboard() {
               }}
               className="favourite_icon"
               onClick={() => {
-                handleFavourite(pro._id);
+                handleFavourite(product._id);
               }}
             >
               <FavoriteBorderIcon />
             </div>
             <img
-              src={pro.itemId["itemImage"]}
+              src={product.itemId["itemImage"]}
               className="card-img-top"
               alt="..."
             />
             <div className="card-body">
-              <h5 className="card-title">{pro.itemId["itemName"]}</h5>
-              <h6>Price: ${pro.itemId["itemPrice"]}</h6>
-              <p className="card-text">{pro.itemId["itemDescription"]}</p>
+              <h5 className="card-title">{product.itemId["itemName"]}</h5>
+              <h6>Price: ${product.itemId["itemPrice"]}</h6>
+              <p className="card-text">{product.itemId["itemDescription"]}</p>
               {/* <button className="btn-sm btn-dark">Edit</button> */}
             </div>
           </div>
@@ -117,22 +112,13 @@ function profileDashboard() {
   return (
     <div>
       {redirectVar}
-      {/* <h1>{favProdS}</h1> */}
-
+    
       <div className="profile_dashboard">
-        {/* <img
-          className="profile_image"
-          src={user.profilePic}
-          alt="profile pic"
-        /> */}
+       
 
-        {/* {cookie.load("user")} */}
+        
         <div className="profile_name">Favourites</div>
-        {/* <div className="edit_profileIcon">
-          <span onClick={editProfile} className="edit_icon">
-            <EditOutlined />
-          </span>
-        </div> */}
+        
 
         <div className="profile_favourites">
           <div className="container-fluid mx-1">
