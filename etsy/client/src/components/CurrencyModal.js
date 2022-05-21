@@ -27,8 +27,8 @@ function CurrencyModal({ setOpenModal }) {
           <select
             class="form-select"
             aria-label="Default select example"
-            onChange={(e) => {
-              setUserPreferedCurrency(e.target.value);
+            onChange={(event) => {
+              setUserPreferedCurrency(event.target.value);
             }}
           >
             <option selected> - select currency - </option>
