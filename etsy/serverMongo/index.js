@@ -30,7 +30,7 @@ app.post("/register", (req, res) => {
 app.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-//   console.log(req.body.username, req.body.password);
+
 
   if (username && password) {
     db.query(
@@ -65,12 +65,4 @@ app.listen(3001, () => {
   console.log("Javeed your server is running on server 30001");
 });
 
-// app.get("/login", (req, res) => {
-//     db.query("SELECT * FROM login", (err, result) => {
-//       if (err) {
-//         console.log("OKay its an error");
-//       } else {
-//         res.send(result);
-//       }
-//     });
-//   });
+
