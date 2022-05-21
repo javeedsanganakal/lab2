@@ -1,12 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const indexRouter = require("./routes/index");
+const indexRouter = require("./routes/ind");
 const morgan = require("morgan");
 const cors = require("cors");
 
 const dotenv = require("dotenv");
 const bodyParse = require("body-parser");
-const connectDB = require("./database/connection");
+const connectDB = require("./database/conn");
 
 const app = express();
 app.use(express.json());
@@ -30,7 +30,7 @@ connectDB();
 app.use(bodyParse.urlencoded({ extended: true }));
 
 //load routers
-app.use("/", require("./routes/index"));
+app.use("/", require("./routes/ind"));
 
 app.use("/", require("./routes/router"));
 app.use("/", require("./routes/productsRouter"));
