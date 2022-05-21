@@ -1,6 +1,6 @@
 const express = require("express");
 const productRoute = express.Router();
-const product = require("../controller/Products");
+const product = require("../controller/Prod");
 
 //API
 productRoute.post("/api/products/addProduct/:id", product.addProduct);
