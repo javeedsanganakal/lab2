@@ -25,10 +25,7 @@ const CartScreen = () => {
   const user = useSelector(selectUser);
   const [finalAmount, setFinalAmount] = useState();
 
-  // const cart = useSelector((state) => state.cart);
-  // const { cartItems } = cart;
-  // const finalCartProduct = useSelector(getCartItems);
-
+  
   const checkOutItems = useSelector(getCartItems);
 
   const [finalCartProducts, setFinalCartProducts] = useState([]);
@@ -40,11 +37,11 @@ const CartScreen = () => {
   const getCartList = () => {
     Axios.get(
       "http://localhost:4000/api/products/getCartItems/" + user.id
-    ).then((response) => {
-      console.log(response.data.result);
-      if (response.data.success === true) {
+    ).then((res) => {
+      console.log(res.data.result);
+      if (res.data.success === true) {
         console.log("geting all fav products and storing in redux");
-        console.log(response.data.result);
+        console.log(res.data.result);
         setFinalCartProducts([...finalCartProducts, ...response.data.result]);
       }
     });
@@ -71,8 +68,7 @@ const CartScreen = () => {
         .toFixed(2);
     }
 
-    // setFinalAmount(finalPrice);
-    // return finalPrice;
+   
   };
 
   const handleCheckOut = async () => {
@@ -80,13 +76,13 @@ const CartScreen = () => {
     checkOutItems.map((product) => {
       console.log(product);
       Axios.post("http://localhost:4000/api/products/addProductToPurchase/", {
-        product: product,
+        product,
       })
-        .then((response) => {
-          console.log(response);
+        .then((res) => {
+          console.log(res);
         })
-        .catch((err) => {
-          console.log(err);
+        .catch((error) => {
+          console.log(error);
         });
 
       const itemDetails = {
@@ -97,22 +93,22 @@ const CartScreen = () => {
       Axios.put(
         "http://localhost:4000/api/products/editItemQtyById/" + product.itemId,
         itemDetails
-      ).then((response) => {
-        if (response.data.success) {
-          console.log("Item details edited successfully.....");
+      ).then((res) => {
+        if (res.data.success) {
+          console.log("Item details edited.....");
         }
       });
     });
 
     Axios.delete("http://localhost:4000/api/products/clearCart")
-      .then((response) => {
-        if (response) {
+      .then((res) => {
+        if (res) {
           console.log("Items deleted successfully");
-          console.log(response.data.message);
+          console.log(res.data.message);
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
 
     dispatch(clearCart());
@@ -141,8 +137,6 @@ const CartScreen = () => {
                 item={item}
                 getCartSubTotal={getCartSubTotal}
                 getCartCount={getCartCount}
-                // qtyChangeHandler={qtyChangeHandler}
-                // removeHandler={removeFromCartHandler}
               />
             ))
           )}
@@ -160,11 +154,6 @@ const CartScreen = () => {
               style={{ backgroundColor: "#eb6d20", color: "black" }}
               onClick={() => {
                 handleCheckOut();
-                // item.itemId,
-                // item.itemImage,
-                // item.itemName,
-                // item.itemPrice,
-                // item.qty
               }}
             >
               Proceed To Checkout
