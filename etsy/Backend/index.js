@@ -1,119 +1,68 @@
-//import the require dependencies
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
-var cors = require("cors");
-var kafka = require("./kafka/cli");
-//use cors to allow cross origin resource sharing
-app.use(
-  cors({
-    origin: ["http://54.82.11.107:3000"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
-app.use(bodyParser.json());
+const express = require("express");
+const app = express();
+const mysql = require("mysql");
+const cors = require("cors");
+const { response } = require("express");
+app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-//Allow Access Control
+const db = mysql.createConnection({
+  user: "root",
+  host: "localhost",
+  password: "Javeed@123",
+  database: "etsy",
+});
 
-app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "http://54.82.11.107:3000");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET,HEAD,OPTIONS,POST,PUT,DELETE"
+app.post("/register", (req, res) => {
+  const email = req.body.email;
+  const username = req.body.username;
+  const password = req.body.password;
+
+  db.query(
+    "INSERT INTO login (email, username, password) VALUES (?, ?, ?)",
+    [email, username, password],
+    (err, result) => {
+      console.log(err);
+    }
   );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
-  );
-  res.setHeader("Cache-Control", "no-cache");
-  next();
 });
 
-//Route to get All Books when user visits the Home Page
+app.post("/login", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
 
 
-app.post("/api/users/register", function (req, res) {
-  console.log(req.body + " IN USER REGISTER POST");
-  kafka.make_request("add_user", req.body, function (err, results) {
-    console.log(req.body + " ----------------------------------");
-    console.log(req.body.email + " ----------------------------------");
-    console.log(req.body.username + " ----------------------------------");
-    console.log("in result");
-    if (err) {
-      console.log(err);
-      console.log("Inside err");
-      res.json({
-        status: "error",
-        msg: "System Error, Try Again.",
-      });
-    } else {
-      console.log("Inside else");
-      console.log(results);
-      res.json({
-        updatedList: results,
-      });
-
-      res.end();
-    }
-  });
+  if (username && password) {
+    db.query(
+      "SELECT * FROM login WHERE username = ? AND password = ?",
+    //   "SELECT * FROM login",
+      [username, password],
+      (err, result, fields) => {
+        // If there is an issue with the query, output the error
+        if (err) {
+          res.send(err);
+        }
+        if (result.length > 0) {
+          res.send(result);
+        //   response.redirect("http://localhost:3000/home");
+        } else {
+          res.send({
+            message:
+              "Invalid credentials, Please click on Register to Sign Up.",
+          });
+        }
+      }
+    );
+  }
+  else {
+    res.send({message:"Please enter Username and Password!"});
+    res.end();
+  }
 });
 
-app.post("/api/users/signin", function (req, res) {
-  console.log(req.body + " IN USER signin POST");
-  kafka.make_request("add_user", req.body, function (err, results) {
-    console.log(req.body + " ----------------------------------");
-    console.log(req.body.email + " ----------------------------------");
-    console.log(req.body.username + " ----------------------------------");
-    console.log("in result");
-    if (err) {
-      console.log(err);
-      console.log("Inside err");
-      res.json({
-        status: "error",
-        msg: "System Error, Try Again.",
-      });
-    } else {
-      console.log("Inside else");
-      console.log(results);
-      res.json({
-        updatedList: results,
-      });
-
-      res.end();
-    }
-  });
+//to check server is running or not
+app.listen(3001, () => {
+  console.log("Javeed your server is running on server 30001");
 });
 
-app.post("/book", function (req, res) {
-  kafka.make_request("post_book", req.body, function (err, results) {
-    console.log(req.body + " ----------------------------------");
-    console.log(req.body.BookID + " ----------------------------------");
-    console.log(req.body.Author + " ----------------------------------");
 
-    console.log("in result");
-    if (err) {
-      console.log(err);
-
-      console.log("Inside err");
-      res.json({
-        status: "error",
-        msg: "System Error, Try Again!!.",
-      });
-    } else {
-      console.log("Inside else");
-      console.log(results);
-      res.json({
-        updatedList: results,
-      });
-
-      res.end();
-    }
-  });
-});
-//start your server
-app.listen(4002);
-console.log("Server is  Listening on port 4002");
