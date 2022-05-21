@@ -9,8 +9,8 @@ function editItemImage({ setShowProductsEditPage, products, itemId }) {
   const [product, setProduct] = useState();
   const [productExist, setProductExist] = useState(false);
 
-  const editImage = (e) => {
-    e.preventDefault();
+  const editImage = (event) => {
+    event.preventDefault();
     const formData = new FormData();
     formData.append("itemImage", itemImage);
     console.log("Inedit client axios" + itemImage);
@@ -19,10 +19,10 @@ function editItemImage({ setShowProductsEditPage, products, itemId }) {
       formData
     ).then((response) => {
       if (response.data.success) {
-        console.log("Item details edited successfully.....");
+        console.log("Item details edited..");
       }
     });
-    // setShowProductsEditPage(false);
+   
   };
 
   useEffect(() => {
@@ -31,11 +31,11 @@ function editItemImage({ setShowProductsEditPage, products, itemId }) {
 
   const fetchItemDetails = () => {
     Axios.get("http://54.82.11.107:4000/getItemById/" + itemId).then(
-      (response) => {
-        if (response.data.success) {
-          console.log(response.data);
-          setItemImage(response.data.result.itemImage);
-          // setProductExist(true);
+      (res) => {
+        if (res.data.success) {
+          console.log(res.data);
+          setItemImage(res.data.result.itemImage);
+          
           console.log("Products stored in product");
         }
       }
@@ -57,8 +57,8 @@ function editItemImage({ setShowProductsEditPage, products, itemId }) {
               name="itemImage"
               className="item_image"
               id="item_image"
-              onChange={(event) => {
-                setItemImage(event.target.files[0]);
+              onChange={(e) => {
+                setItemImage(e.target.files[0]);
               }}
               required
             />
