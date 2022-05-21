@@ -10,9 +10,7 @@ const favouritesDb = require("../models/favourites");
 const cartDb = require("../models/cart");
 const purchasesDb = require("../models/purchases");
 
-// const productRouter = express.Router();
 
-//connect to s3 bucket
 
 const s3 = new aws.S3({
   accessKeyId: process.env.S3_ACCESS_KEY,
@@ -24,17 +22,12 @@ exports.addProduct = (req, res) => {
   console.log("In add products");
   const userId = req.params.id;
 
-  // console.log(userId);
-  // console.log(itemName);
-  // console.log(itemDescription);
-  // console.log(itemPrice);
-  // console.log(itemCount);
-  // console.log(itemCategory);
+
 
   const uploadSingle = upload("etsyappstoragelab").single("itemImage");
 
-  uploadSingle(req, res, async (err) => {
-    if (err) return res.status(400).json({ message: err.message });
+  uploadSingle(req, res, async (error) => {
+    if (error) return res.status(400).json({ message: err.message });
     console.log(req.file);
     console.log(req.file.location);
     console.log("-----------------------------------");
@@ -48,13 +41,13 @@ exports.addProduct = (req, res) => {
     const itemImage = req.file.location;
 
     const product = new items({
-      userId,
-      itemName,
-      itemCategory,
-      itemPrice,
-      itemDescription,
-      itemCount,
-      itemImage,
+      userId:userId,
+      itemName:itemName,
+      itemCategory:itemCategory,
+      itemPrice:itemPrice,
+      itemDescription:itemDescription,
+      itemCount:itemCount,
+      itemImage:itemImage,
     });
 
     await product
@@ -63,8 +56,8 @@ exports.addProduct = (req, res) => {
         console.log("Product added successfully");
         res.send(data);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
         res.status(500).send({ message: "some error occured" });
       });
   });
@@ -107,10 +100,10 @@ exports.getAllProducts = async (req, res) => {
     await items
       .find({ userId: userId })
       .then((products) => {
-        // console.log(products);
+        
         res.send({ success: true, result: products });
       })
-      .catch((err) => {
+      .catch((error) => {
         res.send({
           success: false,
           message: "Unable to fetch products by specific id",
@@ -121,11 +114,11 @@ exports.getAllProducts = async (req, res) => {
 
 exports.getAllProductsById = async (req, res) => {
   const userId = req.params.id;
-  // console.log(userId + "get items by user id");
+ 
   await items
     .find({ userId: userId })
     .then((products) => {
-      // console.log(products);
+      
       res.send({ success: true, result: products });
     })
     .catch((err) => {
@@ -142,7 +135,7 @@ exports.getItemsByItemSearchId = async (req, res) => {
   await items
     .find({ itemId: itemId })
     .then((products) => {
-      // console.log(products);
+      
       res.send({ success: true, result: products });
     })
     .catch((err) => {
@@ -208,7 +201,7 @@ exports.getItems = (req, res) => {
     .sort({ $natural: 1 })
     .then((result) => {
       console.log("In get items page");
-      // console.log(result);
+      
       res.send({ success: true, result });
     });
 };
@@ -221,8 +214,8 @@ exports.addFavourite = (req, res) => {
   const itemId = req.body.itemId;
 
   const favourites = new favouritesDb({
-    userId,
-    itemId,
+    userId:userId,
+    itemId:itemId,
   });
 
   favourites
@@ -301,7 +294,7 @@ exports.addToCart = async (req, res) => {
     cart
       .save(cart)
       .then((data) => {
-        // console.log(data);
+       
         res.send({ success: true, result: data });
       })
       .catch((err) => {
@@ -446,15 +439,6 @@ exports.getSalesCount = (req, res) => {
     .catch((err) => {
       res.send(err);
     });
-
-  // .then((data) => {
-  //   console.log(data);
-  //   res.send({ success: true, result: data });
-  // })
-  // .catch((err) => {
-  //   res.send(err);
-  // });
-  // write code to find sales count
 };
 
 exports.getSearchItems = (req, res) => {
