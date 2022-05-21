@@ -9,17 +9,17 @@ function editShop({ editShopPage, userId }) {
   const [shopImage, setShopImage] = useState("");
   const [shopName, setShopName] = useState("");
 
-  const editShopDetails = (e) => {
-    e.preventDefault();
+  const editShopDetails = (event) => {
+    event.preventDefault();
     console.log("Update form image");
     const formData = new FormData();
     formData.append("shopImage", shopImage);
     Axios.put(
       "http://54.82.11.107:4000/updateShopImageById/" + userId,
       formData
-    ).then((response) => {
-      if (response.data.success) {
-        console.log(response);
+    ).then((res) => {
+      if (res.data.success) {
+        console.log(res);
       }
     });
   };
@@ -55,8 +55,8 @@ function editShop({ editShopPage, userId }) {
               name="shopImage"
               className="shop_image"
               id="shop_image"
-              onChange={(event) => {
-                setShopImage(event.target.files[0]);
+              onChange={(e) => {
+                setShopImage(e.target.files[0]);
               }}
               required
             />
