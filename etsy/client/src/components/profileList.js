@@ -42,27 +42,21 @@ function profileList({ setShowProfileLists }) {
     dispatch(logout());
     dispatch(removeProductsState());
     dispatch(removeFavouritesList());
-    // dispatch(removeAllItemsFromHome());
-    // navigate("/");
+   
     cookie.remove("user", { path: "/" });
     window.location.pathname = "/";
   };
 
-  // let redirectVar = null;
-  // if (!user) {
-  //   console.log("cookie is found " + user);
-  //   redirectVar = <Navigate to="/home" />;
-  // }
+  
   return (
     <div>
-      {/* {redirectVar} */}
+     
       <div onClick={showHomePage} className="profile-modal">
         <div className="profile-content">
-          {/* <CloseLogin setshowSignIn={setshowSignIn} /> */}
-
+         
           <ul className="profile-icons">
             <li onClick={loadProfilePage} className="profile-icon">
-              {/* <b>{cookie.load("user")}</b> */}
+             
               <br />
               <span style={{ fontSize: "14px" }}>Edit your profile</span>
             </li>
