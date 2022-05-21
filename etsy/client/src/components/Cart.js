@@ -5,11 +5,7 @@ import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 import Axios from "axios";
 
-// Components
-// import CartItem from "../components/CartItem";
 
-// Actions
-// import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 import {
   clearCart,
   createCartItem,
@@ -25,9 +21,7 @@ const CartScreen = () => {
   const user = useSelector(selectUser);
   const [finalAmount, setFinalAmount] = useState();
 
-  // const cart = useSelector((state) => state.cart);
-  // const { cartItems } = cart;
-  // const finalCartProduct = useSelector(getCartItems);
+  
 
   const checkOutItems = useSelector(getCartItems);
 
@@ -40,18 +34,18 @@ const CartScreen = () => {
   const getCartList = () => {
     Axios.get(
       "http://54.82.11.107:4000/api/products/getCartItems/" + user.id
-    ).then((response) => {
-      console.log(response.data.result);
-      if (response.data.success === true) {
+    ).then((res) => {
+      console.log(res.data.result);
+      if (res.data.success === true) {
         console.log("geting all fav products and storing in redux");
-        console.log(response.data.result);
-        setFinalCartProducts([...finalCartProducts, ...response.data.result]);
+        console.log(res.data.result);
+        setFinalCartProducts([...finalCartProducts, ...res.data.result]);
       }
     });
   };
 
   const removeFromCartHandler = (id) => {
-    // dispatch(removeFromCart(id));
+    
   };
 
   const getCartCount = () => {
@@ -70,26 +64,23 @@ const CartScreen = () => {
         .reduce((price, item) => price + item.itemId.itemPrice * item.qty, 0)
         .toFixed(2);
     }
-
-    // setFinalAmount(finalPrice);
-    // return finalPrice;
   };
 
   const handleCheckOut = async () => {
     console.log(checkOutItems.length);
-    checkOutItems.map((product) => {
-      console.log(product);
+    checkOutItems.map((prod) => {
+      console.log(prod);
       Axios.post(
         "http://54.82.11.107:4000/api/products/addProductToPurchase/",
         {
-          product: product,
+          product: prod,
         }
       )
-        .then((response) => {
-          console.log(response);
+        .then((res) => {
+          console.log(res);
         })
-        .catch((err) => {
-          console.log(err);
+        .catch((error) => {
+          console.log(error);
         });
 
       const itemDetails = {
@@ -101,22 +92,22 @@ const CartScreen = () => {
         "http://54.82.11.107:4000/api/products/editItemQtyById/" +
           product.itemId,
         itemDetails
-      ).then((response) => {
-        if (response.data.success) {
-          console.log("Item details edited successfully.....");
+      ).then((res) => {
+        if (res.data.success) {
+          console.log("Item details edited.....");
         }
       });
     });
 
     Axios.delete("http://54.82.11.107:4000/api/products/clearCart")
-      .then((response) => {
-        if (response) {
-          console.log("Items deleted successfully");
-          console.log(response.data.message);
+      .then((res) => {
+        if (res) {
+          console.log("Items deleted successfully...");
+          console.log(res.data.message);
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
 
     dispatch(clearCart());
@@ -145,8 +136,7 @@ const CartScreen = () => {
                 item={item}
                 getCartSubTotal={getCartSubTotal}
                 getCartCount={getCartCount}
-                // qtyChangeHandler={qtyChangeHandler}
-                // removeHandler={removeFromCartHandler}
+               
               />
             ))
           )}
@@ -164,11 +154,7 @@ const CartScreen = () => {
               style={{ backgroundColor: "orange", color: "black" }}
               onClick={() => {
                 handleCheckOut();
-                // item.itemId,
-                // item.itemImage,
-                // item.itemName,
-                // item.itemPrice,
-                // item.qty
+               
               }}
             >
               Proceed To Checkout
