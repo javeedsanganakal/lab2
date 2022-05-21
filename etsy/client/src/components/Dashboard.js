@@ -20,28 +20,28 @@ function Dashboard() {
           <img
             className="home__image"
             src="https://i.etsystatic.com/12397853/r/il/505fa0/2426681051/il_300x300.2426681051_mocv.jpg"
-            alt=""
+            alt="home image"
           />
 
           <img
             className="home__image"
             src="https://i.etsystatic.com/10172112/r/il/b85c64/1172658536/il_300x300.1172658536_ep7c.jpg"
-            alt=""
+            alt="home image"
           />
           <img
             className="home__image"
             src="https://i.etsystatic.com/8928370/r/il/f32f25/3376320499/il_300x300.3376320499_7sqq.jpg"
-            alt=""
+            alt="home image"
           />
           <img
             className="home__image"
             src="https://i.etsystatic.com/5395361/r/il/5bb896/3641190222/il_300x300.3641190222_fydq.jpg"
-            alt=""
+            alt="home image"
           />
           <img
             className="home__image"
             src="https://i.etsystatic.com/7362571/r/il/ff7268/2993515527/il_300x300.2993515527_2pmh.jpg "
-            alt=""
+            alt="home image"
           />
         </div>
         <div className="home__row">
