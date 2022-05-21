@@ -13,7 +13,7 @@ import Pagination from "./Pagination";
 function Purchases() {
   const user = useSelector(selectUser);
   const [purchasedProducts, setPurchasedProducts] = useState([]);
-  // const [purchasedProducts, setPurchasedProducts] = useState([]);
+  
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
@@ -32,14 +32,14 @@ function Purchases() {
   const getPurchasedItems = () => {
     Axios.get(
       "http://54.82.11.107:4000/api/products/getPurchasedItems/" + user.id
-    ).then((response) => {
-      if (response.data.success === true) {
+    ).then((res) => {
+      if (res.data.success === true) {
         console.log("----------------Purchased products-------------------");
-        console.log(response.data.result);
-        //   setPurchasedProducts(response.data.result);
-        setPurchasedProducts([...purchasedProducts, ...response.data.result]);
+        console.log(res.data.result);
+        //   setPurchasedProducts(res.data.result);
+        setPurchasedProducts([...purchasedProducts, ...res.data.result]);
 
-        // setPurchasedProducts(response.data.result[0].items);
+        // setPurchasedProducts(res.data.result[0].items);
       }
     });
   };
@@ -57,14 +57,7 @@ function Purchases() {
       return (
         <div className="home_cards mb-4">
           <div className="home_card card">
-            {/* <div
-              className="purchase_item_header"
-              style={{ backgroundColor: "rgb(243, 234, 223)" }}
-            >
-              <p style={{ width: "70%" }} className="purchase_item_price">
-                Order Id #{pro._id}
-              </p>
-            </div> */}
+           
 
             <div className="item" style={{ bordern: "none" }}>
               <img src={pro.itemImage} className="card-img-left" alt="..." />
@@ -76,11 +69,7 @@ function Purchases() {
                 <p className="card-text">Quantity: {pro.qty}</p>
                 <p className="card-text">Price: {pro.itemPrice}</p>
 
-                {/* {pro.giftMessage !== "" ? (
-                  <p className="card-text">Gift Message: {pro.giftMessage}</p>
-                ) : (
-                  <p className="card-text"></p>
-                )} */}
+                
               </div>
             </div>
           </div>
@@ -91,10 +80,7 @@ function Purchases() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // const setItemsInPage = (itemsCount) => {
-  //   localStorage.setItem("itemsPerPage", itemsCount);
-  //   setItemsPerPage(localStorage.getItem("itemsPerPage"));
-  // };
+ 
 
   return (
     <>
