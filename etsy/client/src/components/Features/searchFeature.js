@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 function searchFeature(props) {
-  const [searchTerms, setSearchTerms] = useState();
+  const [searchTerm, setSearchTerm] = useState();
 
   const onChangeSearchEvent = (e) => {
-    setSearchTerms(e.target.value);
+    setSearchTerm(e.target.value);
     props.refreshFunction(e.target.value);
   };
 
@@ -12,9 +12,9 @@ function searchFeature(props) {
     <div>
       <input
         type="text"
-        value={searchTerms}
+        value={searchTerm}
         onChange={onChangeSearchEvent}
-        placeholder="Search by typing.."
+        placeholder="Search...."
       />
     </div>
   );
