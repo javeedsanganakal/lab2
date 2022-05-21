@@ -11,8 +11,8 @@ function CategoryComponent() {
         className="item_category"
         id="item_category"
         placeholder="Item Category"
-        onChange={(event) => {
-          setItemNewCategory(event.target.value);
+        onChange={(e) => {
+          setItemNewCategory(e.target.value);
         }}
         required
       />
