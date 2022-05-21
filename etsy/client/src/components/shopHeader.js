@@ -23,18 +23,13 @@ function shopHeader({ searchProductUserId }) {
   useEffect(() => {
     console.log(user.id + " -------------redux user id --------------------");
     Axios.get("http://54.82.11.107:4000/api/users/getShopById/" + user.id).then(
-      (response) => {
-        if (response.data.success) {
-          // setShop(response.data.result);
-          // console.log(response.data.user["shopImage"]);
-          // console.log(response.data.user["shopName"]);
-          // console.log(response.data.user.shopImage);
-          // console.log(response.data.user);
-
-          console.log(response);
-          setShopName(response.data.user.shopName);
-          setUserName(response.data.user.name);
-          setShopImage(response.data.user.shopImage);
+      (res) => {
+        if (res.data.success) {
+          
+          console.log(res);
+          setShopName(res.data.user.shopName);
+          setUserName(res.data.user.name);
+          setShopImage(res.data.user.shopImage);
         } else {
           console.log("Failed in getting shop by id ");
         }
@@ -42,13 +37,13 @@ function shopHeader({ searchProductUserId }) {
     );
 
     Axios.get("http://54.82.11.107:4000/api/products/getSalesCount").then(
-      (response) => {
+      (res) => {
         console.log("In sales count axios");
-        console.log(response);
+        console.log(res);
         console.log("In sales count axios");
-        if (response.data.success) {
-          console.log(response.data.result);
-          response.data.result
+        if (res.data.success) {
+          console.log(res.data.result);
+          res.data.result
             .filter((sales) => sales._id === user.id)
             .map((salesCount) => setSalesValue(salesCount.sum));
           console.log(salesValue);
@@ -67,14 +62,12 @@ function shopHeader({ searchProductUserId }) {
 
   return (
     <div className="shophome_header">
-      {/* {shopImage} */}
+    
       <div className="shop_details">
         <img width="180px" src={shopImage} alt="shop"></img>
         <h3 className="shop_name">{shopName}</h3>
 
-        {/* <p>Sales: {salesValue}</p> */}
-        {/* {editButton} */}
-
+        
         <button
           onClick={() => editShopDetails(user.id)}
           id="imgupload"
