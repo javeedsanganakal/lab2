@@ -19,24 +19,23 @@ function shopHomeByOther() {
   const { itemId } = useParams(); //itemId
   const { userId } = useParams();
   const [userIdFromSearch, setUserIdFromSearch] = useState();
-  // const user = useSelector(selectUser);
-
+  
   const [userInfo, setUserInfo] = useState("");
   const [itemsByUser, setItemsByUser] = useState([]);
   const dispatch = useDispatch();
   const userid = useSelector(getUserId);
 
   useEffect(() => {
-    // getUserIdFromItemId();
+    
     getItemsFromUserid();
     getUserDetails();
   });
 
   const getUserIdFromItemId = () => {
     Axios.get("http://54.82.11.107:4000/getItemById/" + itemId).then(
-      (response) => {
-        if (response) {
-          dispatch(userId(response.data[0].userId));
+      (res) => {
+        if (res) {
+          dispatch(userId(res.data[0].userId));
         }
       }
     );
@@ -45,23 +44,23 @@ function shopHomeByOther() {
   const getItemsFromUserid = () => {
     Axios.get(
       "http://54.82.11.107:4000/api/products/getAllProducts/" + userId
-    ).then((response) => {
-      if (response) {
-        console.log(response.data.result);
-        // setUserInfo();
-        dispatch(createProducts(response.data.result));
+    ).then((res) => {
+      if (res) {
+        console.log(res.data.result);
+        
+        dispatch(createProducts(res.data.result));
       }
     });
   };
 
   const getUserDetails = () => {
     Axios.get("http://54.82.11.107:4000/api/users/getShopById/" + userId).then(
-      (response) => {
-        if (response) {
-          console.log(response);
-          // setUserInfo(response.data.result[0]);
-          dispatch(userDetails(response.data.user));
-          // console.log(response.data.result[0].name);
+      (res) => {
+        if (res) {
+          console.log(res);
+          // setUserInfo(res.data.result[0]);
+          dispatch(userDetails(res.data.user));
+          // console.log(res.data.result[0].name);
         }
       }
     );
