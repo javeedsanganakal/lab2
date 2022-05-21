@@ -10,8 +10,8 @@ const editShopImage = ({ editShopPage }) => {
   const [productExist, setProductExist] = useState(false);
   const user = useSelector(selectUser);
 
-  const editImage = (e) => {
-    e.preventDefault();
+  const editImage = (event) => {
+    event.preventDefault();
     editShopPage(false);
 
     const formData = new FormData();
@@ -20,12 +20,12 @@ const editShopImage = ({ editShopPage }) => {
     Axios.put(
       "http://54.82.11.107:4000/api/users/updateShopImageById/" + user.id,
       formData
-    ).then((response) => {
-      if (response.data.success) {
+    ).then((res) => {
+      if (res.data.success) {
         console.log("Item details edited successfully.....");
 
         console.log(response);
-        // setShopImage(shopImage);
+        
         console.log("Item details edited successfully.....");
         window.location.pathname = "/shopHome";
       }
@@ -38,11 +38,10 @@ const editShopImage = ({ editShopPage }) => {
 
   const fetchItemDetails = () => {
     Axios.get("http://54.82.11.107:4000/api/users/getShopById/" + user.id).then(
-      (response) => {
-        if (response) {
-          console.log(response.data.user["shopImage"] + " shop image ");
-          setShopImage(response.data.user["shopImage"]);
-          // setProductExist(true);
+      (res) => {
+        if (res) {
+          console.log(res.data.user["shopImage"] + " shop image ");
+          setShopImage(res.data.user["shopImage"]);
           console.log("Products stored in get shop by id");
         }
       }
@@ -63,8 +62,8 @@ const editShopImage = ({ editShopPage }) => {
               name="shopImage"
               className="item_image"
               id="item_image"
-              onChange={(event) => {
-                setShopImage(event.target.files[0]);
+              onChange={(e) => {
+                setShopImage(e.target.files[0]);
               }}
               required
             />
