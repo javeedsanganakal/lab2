@@ -43,7 +43,7 @@ function addProducts({ setShowProductsAddPage }) {
     ).then((response) => {
       console.log(response);
       if (response) {
-        console.log("Image uploaded successfully");
+        console.log("Image uploaded successfully!!!");
         window.location.pathname = "/shopHome";
       }
     });
@@ -87,8 +87,8 @@ function addProducts({ setShowProductsAddPage }) {
               className="item_name"
               id="item_name"
               placeholder="Item Name"
-              onChange={(event) => {
-                setItemName(event.target.value);
+              onChange={(e) => {
+                setItemName(e.target.value);
               }}
               required
             />
@@ -98,10 +98,10 @@ function addProducts({ setShowProductsAddPage }) {
             <label htmlFor="category">Category</label>
             <br />
             <select
-              onChange={(event) => {
-                setItemCategory(event.target.value);
+              onChange={(e) => {
+                setItemCategory(e.target.value);
               }}
-              // onClick={enableNewCategory}
+             
               style={{
                 width: "90%",
                 height: "40px",
@@ -128,14 +128,14 @@ function addProducts({ setShowProductsAddPage }) {
                 className="item_category"
                 id="item_category"
                 placeholder="Item Category"
-                // onChange={(event) => {
-                //   setItemCategory(event.target.value);
+                // onChange={(e) => {
+                //   setItemCategory(e.target.value);
                 // }}
                 required
               />
             </div>
           )}
-          {/* <h1>{itemCategory}</h1> */}
+       
 
           <div className="htmlForm-group">
             <label htmlFor="item_image">Item Image</label>
@@ -146,8 +146,8 @@ function addProducts({ setShowProductsAddPage }) {
               name="itemImage"
               className="item_image"
               id="item_image"
-              onChange={(event) => {
-                setItemImage(event.target.files[0]);
+              onChange={(e) => {
+                setItemImage(e.target.files[0]);
               }}
               required
             />
@@ -163,8 +163,8 @@ function addProducts({ setShowProductsAddPage }) {
               id="item_price"
               placeholder="Item Price"
               min="1"
-              onChange={(event) => {
-                setItemPrice(event.target.value);
+              onChange={(e) => {
+                setItemPrice(e.target.value);
               }}
               required
             />
@@ -178,8 +178,8 @@ function addProducts({ setShowProductsAddPage }) {
               className="item_des"
               id="item_des"
               placeholder="Item Description"
-              onChange={(event) => {
-                setItemDescription(event.target.value);
+              onChange={(e) => {
+                setItemDescription(e.target.value);
               }}
               required
             />
@@ -194,8 +194,8 @@ function addProducts({ setShowProductsAddPage }) {
               id="item_count"
               placeholder="Item Count"
               min="1"
-              onChange={(event) => {
-                setItemCount(event.target.value);
+              onChange={(e) => {
+                setItemCount(e.target.value);
               }}
               required
             />
